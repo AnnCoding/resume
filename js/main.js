@@ -1,0 +1,404 @@
+// ==================== 粒子拖尾效果 ====================
+class ParticleTrail {
+    constructor() {
+        this.particles = [];
+        this.particleContainer = null;
+        this.lastX = 0;
+        this.lastY = 0;
+        this.hue = 0;
+        this.isMobile = window.innerWidth <= 768;
+
+        this.init();
+    }
+
+    init() {
+        // 移动端不启用粒子效果
+        if (this.isMobile) return;
+
+        // 创建粒子容器
+        this.particleContainer = document.createElement('div');
+        this.particleContainer.className = 'cursor-particles';
+        document.body.appendChild(this.particleContainer);
+
+        // 监听鼠标移动
+        document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+        document.addEventListener('touchmove', this.handleTouchMove.bind(this));
+
+        // 动画循环
+        this.animate();
+    }
+
+    handleMouseMove(e) {
+        if (this.isMobile) return;
+
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // 计算移动距离，避免产生过多粒子
+        const distance = Math.hypot(x - this.lastX, y - this.lastY);
+
+        if (distance > 5) {
+            this.createParticle(x, y);
+            this.lastX = x;
+            this.lastY = y;
+        }
+    }
+
+    handleTouchMove(e) {
+        if (this.isMobile) return;
+
+        const touch = e.touches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+
+        const distance = Math.hypot(x - this.lastX, y - this.lastY);
+
+        if (distance > 8) {
+            this.createParticle(x, y, true);
+            this.lastX = x;
+            this.lastY = y;
+        }
+    }
+
+    createParticle(x, y, isTouch = false) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // 橙色浅蓝色系颜色
+        const colors = [
+            'rgba(251, 146, 60, 0.8)',   // 橙色
+            'rgba(125, 211, 252, 0.8)',   // 浅蓝
+            'rgba(253, 186, 116, 0.8)',   // 浅橙
+            'rgba(56, 189, 248, 0.8)'     // 天蓝
+        ];
+
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const size = isTouch ? Math.random() * 8 + 6 : Math.random() * 6 + 4;
+
+        particle.style.cssText = `
+            left: ${x}px;
+            top: ${y}px;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${randomColor};
+            box-shadow: 0 0 ${size * 2}px ${randomColor};
+        `;
+
+        this.particleContainer.appendChild(particle);
+        this.particles.push({
+            element: particle,
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            life: 1
+        });
+
+        // 限制粒子数量
+        if (this.particles.length > 50) {
+            const oldParticle = this.particles.shift();
+            oldParticle.element.remove();
+        }
+    }
+
+    animate() {
+        this.particles.forEach((particle, index) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.life -= 0.02;
+
+            particle.element.style.left = `${particle.x}px`;
+            particle.element.style.top = `${particle.y}px`;
+            particle.element.style.opacity = particle.life;
+
+            if (particle.life <= 0) {
+                particle.element.remove();
+                this.particles.splice(index, 1);
+            }
+        });
+
+        requestAnimationFrame(this.animate.bind(this));
+    }
+}
+
+// 初始化粒子效果
+const particleTrail = new ParticleTrail();
+
+// ==================== 导航栏交互 ====================
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// 点击导航链接后关闭菜单
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// ==================== 滚动时导航栏效果 ====================
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > 100) {
+        navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+    } else {
+        navbar.style.background = 'rgba(26, 26, 46, 0.9)';
+    }
+
+    lastScroll = currentScroll;
+});
+
+// ==================== 滚动动画 ====================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// 为各个section添加动画效果
+document.querySelectorAll('section').forEach(section => {
+    section.classList.add('fade-in');
+    observer.observe(section);
+});
+
+// ==================== 打字效果 ====================
+const typingTexts = [
+    '6年Java后台开发经验 | 金融科技 | 供应链系统',
+    '架构设计 | 性能优化 | 领域驱动设计',
+    '热爱技术 | 情绪稳定 | 持续学习'
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.querySelector('.typing-text');
+
+function typeEffect() {
+    const currentText = typingTexts[textIndex];
+
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000; // 打完一句话后停顿
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typingTexts.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+}
+
+// 延迟启动打字效果
+setTimeout(typeEffect, 1500);
+
+// ==================== 技能标签悬停效果 ====================
+document.querySelectorAll('.skill-tag').forEach(tag => {
+    tag.addEventListener('mouseenter', function() {
+        this.style.background = 'linear-gradient(135deg, #fdba74, #fb923c)';
+    });
+
+    tag.addEventListener('mouseleave', function() {
+        this.style.background = 'linear-gradient(135deg, #fb923c, #7dd3fc)';
+    });
+});
+
+// ==================== 平滑滚动 ====================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+
+        if (target) {
+            const offsetTop = target.offsetTop - 60;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ==================== 视差滚动效果 ====================
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const shapes = document.querySelectorAll('.shape');
+
+    shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.05;
+        shape.style.transform = `translate(-50%, -50%) translateY(${scrolled * speed}px)`;
+    });
+});
+
+// ==================== 当前活跃导航链接高亮 ====================
+const sections = document.querySelectorAll('section[id]');
+
+function highlightNav() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLink?.classList.add('active');
+        } else {
+            navLink?.classList.remove('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', highlightNav);
+
+// ==================== 数字计数动画 ====================
+function animateCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+
+        const updateCounter = () => {
+            current += step;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+
+        updateCounter();
+    });
+}
+
+// ==================== 鼠标跟随效果 ====================
+const hero = document.querySelector('.hero');
+
+hero.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+
+    const xPercent = (clientX / innerWidth - 0.5) * 2;
+    const yPercent = (clientY / innerHeight - 0.5) * 2;
+
+    const shapes = document.querySelectorAll('.shape');
+    shapes.forEach((shape, index) => {
+        const depth = (index + 1) * 10;
+        shape.style.transform = `translate(-50%, -50%) translate(${xPercent * depth}px, ${yPercent * depth}px)`;
+    });
+});
+
+// ==================== 页面加载动画 ====================
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// ==================== 控制台彩蛋 - 橙色浅蓝色系 ====================
+console.log('%c欢迎来到我的个人网站！', 'font-size: 20px; color: #fb923c; font-weight: bold;');
+console.log('%c如果你对代码感兴趣，欢迎联系我！', 'font-size: 14px; color: #7dd3fc;');
+console.log('%c🌊 Let\'s build something amazing together!', 'font-size: 12px; color: #fdba74;');
+
+// ==================== 返回顶部按钮 ====================
+const backToTop = document.createElement('button');
+backToTop.className = 'back-to-top';
+backToTop.innerHTML = '↑';
+backToTop.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fb923c, #7dd3fc);
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+`;
+
+document.body.appendChild(backToTop);
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 500) {
+        backToTop.style.opacity = '1';
+        backToTop.style.visibility = 'visible';
+    } else {
+        backToTop.style.opacity = '0';
+        backToTop.style.visibility = 'hidden';
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+backToTop.addEventListener('mouseenter', () => {
+    backToTop.style.transform = 'scale(1.1)';
+});
+
+backToTop.addEventListener('mouseleave', () => {
+    backToTop.style.transform = 'scale(1)';
+});
+
+// ==================== 懒加载图片（预留功能） ====================
+// 如果后续添加真实图片，可以使用懒加载
+/*
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+        }
+    });
+});
+
+document.querySelectorAll('img.lazy').forEach(img => {
+    imageObserver.observe(img);
+});
+*/
+
+console.log('✨ 所有交互效果已加载完成！粒子拖尾效果已启用。');
