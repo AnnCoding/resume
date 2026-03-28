@@ -402,3 +402,17 @@ document.querySelectorAll('img.lazy').forEach(img => {
 */
 
 console.log('✨ 所有交互效果已加载完成！粒子拖尾效果已启用。');
+
+// ==================== 职业感悟折叠功能 ====================
+function toggleInsights() {
+    const section = document.querySelector('#insights-section');
+    section.classList.toggle('expanded');
+}
+
+// 默认隐藏职业感悟板块
+document.addEventListener('DOMContentLoaded', function() {
+    const insightsSection = document.querySelector('#insights-section');
+    if (insightsSection) {
+        insightsSection.classList.remove('expanded');
+    }
+});

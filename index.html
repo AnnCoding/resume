@@ -376,10 +376,12 @@
     </section>
 
     <!-- 职业感悟 -->
-    <section id="insights-section" class="insights">
+    <section id="insights-section" class="insights collapsible-section">
         <div class="container">
-            <h2 class="section-title">职业感悟</h2>
-            <div class="insights-grid">
+            <h2 class="section-title toggle-title" onclick="toggleInsights()">
+                职业感悟 <span class="toggle-icon">▼</span>
+            </h2>
+            <div class="insights-grid" id="insightsGrid">
                 <div class="insight-card">
                     <div class="insight-quote">"</div>
                     <p class="insight-text">拥抱AI时代的"从容"。核心竞争力已经从"写代码的速度"进化为"解决复杂问题的能力"和"对业务的深度洞察"。AI能补全代码，但如何将混乱的现实业务抽象为优雅的数据模型，如何在性能与成本之间做出最适合的架构权衡，这些是AI短期内无法替代的"工程师智慧"。</p>
@@ -406,33 +408,27 @@
             <div class="life-gallery">
                 <div class="life-item">
                     <div class="life-icon">📚</div>
-                    <h3>阅读学习</h3>
-                    <p>坚持每月读书，输出读书笔记，涵盖技术、管理、思维方法等领域</p>
+                    <p>阅读学习</p>
                 </div>
                 <div class="life-item">
                     <div class="life-icon">🏃‍♀️</div>
-                    <h3>运动健身</h3>
-                    <p>每周坚持跑步和健身，保持健康的身体和积极的心态</p>
+                    <p>运动健身</p>
                 </div>
                 <div class="life-item">
                     <div class="life-icon">🎬</div>
-                    <h3>电影影评</h3>
-                    <p>看完电影后输出影评，记录思考和感悟</p>
+                    <p>电影影评</p>
                 </div>
                 <div class="life-item">
                     <div class="life-icon">✈️</div>
-                    <h3>旅行摄影</h3>
-                    <p>喜欢用镜头记录生活中的美好瞬间，在旅途中发现新世界</p>
+                    <p>旅行摄影</p>
                 </div>
                 <div class="life-item">
                     <div class="life-icon">💃</div>
-                    <h3>舞蹈学习</h3>
-                    <p>学习舞蹈，培养艺术修养，保持身心协调</p>
+                    <p>舞蹈学习</p>
                 </div>
                 <div class="life-item">
                     <div class="life-icon">🌍</div>
-                    <h3>英语学习</h3>
-                    <p>持续学习英语，拓展国际视野</p>
+                    <p>英语学习</p>
                 </div>
             </div>
         </div>

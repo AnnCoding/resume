@@ -757,13 +757,40 @@ body {
 /* ==================== 感悟体验 ==================== */
 .insights {
     padding: 100px 0;
-    background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(37, 37, 66, 0.3) 100%);
+    background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(254, 247, 255, 0.5) 100%);
 }
 
-.insights-grid {
+/* 可折叠区域 */
+.collapsible-section .insights-grid {
+    display: none;
+}
+
+.collapsible-section.expanded .insights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+.toggle-title {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.toggle-title:hover {
+    color: var(--primary-color);
+}
+
+.toggle-icon {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-section.expanded .toggle-icon {
+    transform: rotate(180deg);
 }
 
 .insight-card {
@@ -828,9 +855,16 @@ body {
 }
 
 .life-item:hover {
-    transform: translateY(-5px) rotate(2deg);
+    transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(252, 215, 252, 0.2);
     border-color: var(--secondary-color);
+}
+
+.life-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 .life-icon {
