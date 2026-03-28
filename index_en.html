@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annie - Backend Engineer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Serif SC', sans-serif;
+        }
+        .lang-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 999;
+        }
+        .lang-switch a {
+            padding: 8px 16px;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .lang-switch a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switch -->
+    <div class="lang-switch">
+        <a href="index.html">中文</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Annie's Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#honors">Honors</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="glitch" data-text="Hi, I'm">Hi, I'm</h1>
+                <h2 class="name-reveal">Annie</h2>
+                <p class="typing-text">Backend Developer | Java/Go | AI Applications | Enterprise Systems</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <div class="card-icon">👩‍💻</div>
+                    <h3>Profile</h3>
+                    <p>Experienced backend developer proficient in Java, Go, Python, and C++. Deep expertise in project management, architecture design, performance optimization, fintech, supply chain systems, and AI applications. Led the development of Feishu enterprise knowledge Q&A features and designed the billing pipeline for knowledge base Q&A scenarios.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Job Preferences</h3>
+                    <p>Backend Engineer | Architect | AI Application Developer</p>
+                    <p>Preferred Locations: Shenzhen, Hong Kong</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">💡</div>
+                    <h3>Core Strengths</h3>
+                    <ul class="strengths-list">
+                        <li>Strong execution & stress tolerance</li>
+                        <li>Excellent teamwork spirit</li>
+                        <li>Emotionally stable & good communicator</li>
+                        <li>Work-life balance advocate</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skills-section">
+                <h3>Tech Stack</h3>
+                <div class="skills-container">
+                    <div class="skill-tag">Java</div>
+                    <div class="skill-tag">Go</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">C++</div>
+                    <div class="skill-tag">Kitex</div>
+                    <div class="skill-tag">Hertz</div>
+                    <div class="skill-tag">RAG</div>
+                    <div class="skill-tag">RocketMQ</div>
+                    <div class="skill-tag">MyBatis</div>
+                    <div class="skill-tag">Spring Boot</div>
+                    <div class="skill-tag">Microservices</div>
+                    <div class="skill-tag">Distributed Systems</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2024 - Apr 2026</div>
+                        <h3>Backend Developer</h3>
+                        <h4>ByteDance - Feishu Search</h4>
+                        <p>Responsible for end-to-end development and maintenance of knowledge base Q&A scenario pipelines, billing system design, and search platform integration maintenance.</p>
+                        <ul>
+                            <li>Developed knowledge base Q&A scenario pipelines from 0 to 1</li>
+                            <li>Designed and implemented billing flow for the Q&A system</li>
+                            <li>Maintained search platform integration systems</li>
+                            <li>Received Q1 2025 Spot Bonus - Lark Star</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mar 2020 - Jul 2023</div>
+                        <h3>Java Developer</h3>
+                        <h4>WeBank - Corporate & Institutional Business</h4>
+                        <p>Built and maintained enterprise App operation systems, led user system refactoring, and drove login and real-name authentication feature improvements.</p>
+                        <ul>
+                            <li>Built enterprise App operation system (popups, banners, overlays, homepage operations)</li>
+                            <li>Refactored enterprise App user system</li>
+                            <li>Led user login and real-name authentication feature reconstruction</li>
+                            <li>Patent: "Orchestratable Service System Based on State Transition" (2022)</li>
+                            <li>Department Quality Star Award (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2018 - Mar 2020</div>
+                        <h3>Java Developer</h3>
+                        <h4>Meituan - Supply Chain Systems</h4>
+                        <p>Participated in supply chain product center refactoring, maintained listing information, and built UGC and virtual phone systems.</p>
+                        <ul>
+                            <li>Supply chain product center refactoring project</li>
+                            <li>Maintained and updated listing information</li>
+                            <li>Built and maintained UGC system (reviews, ratings, tags, favorites)</li>
+                            <li>Built virtual phone system</li>
+                            <li>Patent: "Data Synchronization Solution in Distributed Scenarios" (2021)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jul 2017 - Nov 2017</div>
+                        <h3>Game Development Intern</h3>
+                        <h4>Yoozoo Games - Battle God Studio</h4>
+                        <p>Developed game features and learned game development fundamentals.</p>
+                        <ul>
+                            <li>Game terrain model development</li>
+                            <li>Player behavior control development</li>
+                            <li>Game quest logic development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">Feishu Knowledge Q&A</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Feishu Knowledge Q&A System</h3>
+                        <p class="project-desc">Enterprise-grade knowledge Q&A platform based on RAG (Retrieval-Augmented Generation) architecture, serving millions of enterprise users on Feishu/Lark. Four-layer architecture (Access → Engine → Retrieval → Index), supporting multi-source knowledge (docs, wiki, email, meeting notes) intelligent retrieval and Q&A with streaming response, multi-turn dialogue, and deep retrieval capabilities.</p>
+                        <div class="project-tech">
+                            <span>Go</span>
+                            <span>Kitex Streaming</span>
+                            <span>Frontier</span>
+                            <span>RocketMQ</span>
+                            <span>RAG</span>
+                            <span>Vector Search</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">Operation System</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Enterprise Operation System</h3>
+                        <p class="project-desc">Custom management console for configuring operation strategies and UI styles, enabling personalized interfaces for different user segments. Supports popups, banners, overlays, and strategic homepage content placement.</p>
+                        <div class="project-tech">
+                            <span>MyBatis Interceptor</span>
+                            <span>DDD</span>
+                            <span>Chain of Responsibility</span>
+                            <span>TiDB</span>
+                            <span>TDSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">User System</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>User Authentication System</h3>
+                        <p class="project-desc">Complete user login system supporting phone, WeChat, QQ social login with account association. Personal and enterprise real-name verification with online verification, facial recognition, and enterprise data source validation.</p>
+                        <div class="project-tech">
+                            <span>Quartz</span>
+                            <span>Redis Hot User</span>
+                            <span>State Machine</span>
+                            <span>Multi-account Linking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">UGC System</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>UGC System</h3>
+                        <p class="project-desc">User-generated content platform with content generation, moderation, display, and analytics. Features include reviews, ratings, tags, favorites, moderation with false-positive rate tracking, and AB test platform integration.</p>
+                        <div class="project-tech">
+                            <span>MQ</span>
+                            <span>MCC Config Center</span>
+                            <span>AB Test Platform</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">Product Center</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Supply Chain Product Center</h3>
+                        <p class="project-desc">Domain model-based storage architecture upgrade enabling unified product distribution across multiple third-party platforms (Meituan Hotels, Mafengwo, Xiaohongshu). Includes storage refactoring, product center features, and host-listing relationship management CRM.</p>
+                        <div class="project-tech">
+                            <span>Delay Queue</span>
+                            <span>Crane Scheduler</span>
+                            <span>Redis</span>
+                            <span>Spring Boot</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-image">Personal Agent</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Stock Analysis Agent</h3>
+                        <p class="project-desc">Personal research project - built an AI agent for stock selection and daily market analysis, exploring AI applications in financial domain.</p>
+                        <div class="project-tech">
+                            <span>AI Agent</span>
+                            <span>Python</span>
+                            <span>Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honors Section -->
+    <section id="honors" class="insights">
+        <div class="container">
+            <h2 class="section-title">Honors & Awards</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-quote">🌟</div>
+                    <p class="insight-text">Q1 2025 ByteDance Spot Bonus - Lark Star</p>
+                    <div class="insight-date">Company Honor</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">🏆</div>
+                    <p class="insight-text">Patent: "Orchestratable Service System Based on State Transition" (2022)</p>
+                    <div class="insight-date">Invention Patent</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">🏆</div>
+                    <p class="insight-text">Patent: "Data Synchronization Solution in Distributed Scenarios" (2021)</p>
+                    <div class="insight-date">Invention Patent</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">⭐</div>
+                    <p class="insight-text">WeBank Department Quality Star (2022)</p>
+                    <div class="insight-date">Company Honor</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">🎖️</div>
+                    <p class="insight-text">National Mathematical Modeling Competition - Shaanxi Provincial Second Prize (2016)</p>
+                    <div class="insight-date">Provincial Award</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">🎖️</div>
+                    <p class="insight-text">TI Cup Undergraduate Electronic Design Contest - Shaanxi Provincial Second Prize (2016)</p>
+                    <div class="insight-date">Provincial Award</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">🌟</div>
+                    <p class="insight-text">National Encouragement Scholarship & University Merit Scholarship (Two Consecutive Years)</p>
+                    <div class="insight-date">University Honor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="learning">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="learning-content">
+                <div class="learning-item">
+                    <div class="learning-icon">🎓</div>
+                    <h3>Bachelor's Degree</h3>
+                    <p>Sep 2014 - Jun 2018</p>
+                    <p>Xi'an Shiyou University - Electronic Information Engineering</p>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-icon">📚</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Books: "Domain-Driven Design", "Refactoring", "Clean Code"</p>
+                    <p>AI Era Learning: Claude Code, Tech Bloggers, Open Source Projects</p>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-icon">💡</div>
+                    <h3>Self-Improvement</h3>
+                    <p>Focus on energy management and time management</p>
+                    <p>Monthly reading notes & movie reviews, regular fitness & running</p>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-icon">🌟</div>
+                    <h3>Career Goals</h3>
+                    <p>Backend Development (Project Management Focus) | QA Development</p>
+                    <p>Aspire to become an independent freelance developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights-section" class="insights">
+        <div class="container">
+            <h2 class="section-title">Professional Insights</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-quote">"</div>
+                    <p class="insight-text">Embrace "composure" in the AI era. My core competitiveness has evolved from "coding speed" to "complex problem-solving ability" and "deep business insight." AI can autocomplete code, but abstracting messy real-world business into elegant data models, making optimal architecture trade-offs between performance and cost—these "engineer wisdom" aspects cannot be replaced by AI in the short term.</p>
+                    <div class="insight-date">AI Era Reflection</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">"</div>
+                    <p class="insight-text">Age 35 has no clear boundary. We must move beyond just writing code and requirements, learning to decompose problems, analyze them, and form our own methodologies. Technology is a means to solve problems. What matters more is coordinating more resources to help enterprises solve bigger problems. Match problem-solving difficulty with life stages—we should view this from a higher perspective.</p>
+                    <div class="insight-date">Career Development</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-quote">"</div>
+                    <p class="insight-text">Embrace my identity as a woman in tech with confidence. Transform strengths in listening and synthesis into unique leadership. In architecture reviews, catch edge cases others might miss. When technical debt accumulates, patiently craft smooth migration plans. Tech is a marathon—the first 10km test explosive power, but after thirty, it's about mental stamina, vision, and reverence for technology's essence.</p>
+                    <div class="insight-date">Women in Tech</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life Section -->
+    <section id="life" class="life">
+        <div class="container">
+            <h2 class="section-title">Life & Interests</h2>
+            <div class="life-gallery">
+                <div class="life-item">
+                    <div class="life-icon">📚</div>
+                    <h3>Reading</h3>
+                    <p>Monthly reading with notes across tech, management, and thinking methodologies</p>
+                </div>
+                <div class="life-item">
+                    <div class="life-icon">🏃‍♀️</div>
+                    <h3>Fitness</h3>
+                    <p>Weekly running and workout routines for physical and mental wellness</p>
+                </div>
+                <div class="life-item">
+                    <div class="life-icon">🎬</div>
+                    <h3>Movies</h3>
+                    <p>Write reviews after watching films to record thoughts and insights</p>
+                </div>
+                <div class="life-item">
+                    <div class="life-icon">✈️</div>
+                    <h3>Travel</h3>
+                    <p>Capture life's beautiful moments through photography, discover new worlds</p>
+                </div>
+                <div class="life-item">
+                    <div class="life-icon">💃</div>
+                    <h3>Dance</h3>
+                    <p>Learning dance to cultivate artistic appreciation and body-mind coordination</p>
+                </div>
+                <div class="life-item">
+                    <div class="life-icon">🌍</div>
+                    <h3>English Learning</h3>
+                    <p>Continuous English learning to expand global perspective</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-content">
+                <p class="contact-intro">If you're interested in my profile or have suitable job opportunities, feel free to reach out!</p>
+                <div class="contact-methods">
+                    <a href="mailto:annie@example.com" class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>annie@example.com</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/annie-dev" target="_blank" class="contact-item">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-info">
+                            <h4>GitHub</h4>
+                            <p>github.com/annie-dev</p>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com/in/annie-profile" target="_blank" class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div class="contact-info">
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/annie-profile</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-info">
+                            <h4>WeChat</h4>
+                            <p>annie_wechat</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Annie. Made with ❤️</p>
+            <p class="footer-note">Portfolio website for job applications</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Update typing text for English version
+        const typingTextsEn = [
+            'Backend Developer | Java/Go | AI Applications | Enterprise Systems',
+            'Feishu Knowledge Q&A | WeBank | Meituan',
+            'RAG Architecture | Distributed Systems | Performance Optimization'
+        ];
+    </script>
+</body>
+</html>
