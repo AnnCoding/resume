@@ -185,7 +185,7 @@ const typingTexts = isEnglishPage ? [
     'Lark Knowledge Q&A | WeBank | Meituan',
     'RAG Architecture | Distributed Systems | Performance Optimization'
 ] : [
-    '多年后端开发经验 | Java/Go | AI应用 | 企业级系统',
+    '多年服务端开发经验 | Java/Go | AI应用 | 企业级系统',
     '飞书知识问答 | 微众银行 | 美团点评',
     'RAG架构 | 分布式系统 | 性能优化'
 ];
