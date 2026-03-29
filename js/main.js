@@ -178,7 +178,13 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 // ==================== 打字效果 ====================
-const typingTexts = [
+// 根据页面语言使用不同文本
+const isEnglishPage = window.location.pathname.includes('index_en.html');
+const typingTexts = isEnglishPage ? [
+    'Backend Developer | Java/Go | AI Applications | Enterprise Systems',
+    'Feishu Knowledge Q&A | WeBank | Meituan',
+    'RAG Architecture | Distributed Systems | Performance Optimization'
+] : [
     '多年后端开发经验 | Java/Go | AI应用 | 企业级系统',
     '飞书知识问答 | 微众银行 | 美团点评',
     'RAG架构 | 分布式系统 | 性能优化'
@@ -328,9 +334,15 @@ window.addEventListener('load', () => {
 });
 
 // ==================== 控制台彩蛋 - 冰淇淋色调 ====================
-console.log('%c欢迎来到我的个人网站！', 'font-size: 20px; color: #FCD7FC; font-weight: bold;');
-console.log('%c如果你对代码感兴趣，欢迎联系我！', 'font-size: 14px; color: #B1EBFC;');
-console.log('%c🍦 Let\'s build something amazing together!', 'font-size: 12px; color: #D0FFC9;');
+if (isEnglishPage) {
+    console.log('%cWelcome to my personal website!', 'font-size: 20px; color: #FCD7FC; font-weight: bold;');
+    console.log('%cIf you\'re interested in my work, feel free to reach out!', 'font-size: 14px; color: #B1EBFC;');
+    console.log('%c🍦 Let\'s build something amazing together!', 'font-size: 12px; color: #D0FFC9;');
+} else {
+    console.log('%c欢迎来到我的个人网站！', 'font-size: 20px; color: #FCD7FC; font-weight: bold;');
+    console.log('%c如果你对代码感兴趣，欢迎联系我！', 'font-size: 14px; color: #B1EBFC;');
+    console.log('%c🍦 Let\'s build something amazing together!', 'font-size: 12px; color: #D0FFC9;');
+}
 
 // ==================== 返回顶部按钮 ====================
 const backToTop = document.createElement('button');
@@ -401,7 +413,7 @@ document.querySelectorAll('img.lazy').forEach(img => {
 });
 */
 
-console.log('✨ 所有交互效果已加载完成！粒子拖尾效果已启用。');
+console.log(isEnglishPage ? '✨ All interactive effects loaded! Particle trail enabled.' : '✨ 所有交互效果已加载完成！粒子拖尾效果已启用。');
 
 // ==================== 职业感悟折叠功能 ====================
 function toggleInsights() {
