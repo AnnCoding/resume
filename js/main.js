@@ -192,36 +192,35 @@ const typingTexts = isEnglishPage ? [
 
 let textIndex = 0;
 let charIndex = 0;
-let isDeleting = false;
 const typingElement = document.querySelector('.typing-text');
+const typedLines = [];
 
 function typeEffect() {
-    const currentText = typingTexts[textIndex];
+    // 如果还有文本要打
+    if (textIndex < typingTexts.length) {
+        const currentText = typingTexts[textIndex];
 
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typingElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
+        if (charIndex < currentText.length) {
+            // 正在打字
+            typedLines[textIndex] = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        } else {
+            // 当前行打完，停顿后开始下一行
+            setTimeout(() => {
+                textIndex++;
+                charIndex = 0;
+                typeEffect();
+            }, 1500);
+        }
+
+        // 更新显示，用换行符连接所有已打的内容
+        typingElement.innerHTML = typedLines.filter(line => line !== undefined).join('<br>');
+        setTimeout(typeEffect, 80);
     }
-
-    let typeSpeed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; // 打完一句话后停顿
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % typingTexts.length;
-        typeSpeed = 500;
-    }
-
-    setTimeout(typeEffect, typeSpeed);
 }
 
 // 延迟启动打字效果
-setTimeout(typeEffect, 1500);
+setTimeout(typeEffect, 1000);
 
 // ==================== 技能标签悬停效果 ====================
 document.querySelectorAll('.skill-tag').forEach(tag => {
