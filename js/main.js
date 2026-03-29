@@ -196,26 +196,24 @@ const typingElement = document.querySelector('.typing-text');
 const typedLines = [];
 
 function typeEffect() {
-    // 如果还有文本要打
-    if (textIndex < typingTexts.length) {
-        const currentText = typingTexts[textIndex];
+    // 如果所有行都打完了，停止
+    if (textIndex >= typingTexts.length) {
+        return;
+    }
 
-        if (charIndex < currentText.length) {
-            // 正在打字
-            typedLines[textIndex] = currentText.substring(0, charIndex + 1);
-            charIndex++;
-        } else {
-            // 当前行打完，停顿后开始下一行
-            setTimeout(() => {
-                textIndex++;
-                charIndex = 0;
-                typeEffect();
-            }, 1500);
-        }
+    const currentText = typingTexts[textIndex];
 
-        // 更新显示，用换行符连接所有已打的内容
+    if (charIndex < currentText.length) {
+        // 正在打字
+        typedLines[textIndex] = currentText.substring(0, charIndex + 1);
+        charIndex++;
         typingElement.innerHTML = typedLines.filter(line => line !== undefined).join('<br>');
         setTimeout(typeEffect, 80);
+    } else {
+        // 当前行打完，停顿后开始下一行
+        textIndex++;
+        charIndex = 0;
+        setTimeout(typeEffect, 1500);
     }
 }
 
